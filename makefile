@@ -14,6 +14,16 @@ clean:
 ques: assignment-$(FILE).pdf
 	$(READ) $<
 	
+spell: ass$(FILE).tex
+	ispell $<
+	
+class_update:
+	cd ..; \
+	git submodule update --init --recursive;
+#	cd -;
+	cp -r ../UNSW_Latex/artwork artwork;
+	cp -r ../UNSW_Latex/unswmaths.cls unswmaths.cls
+	
 coffee:
 	@echo "Go out and buy some."
 	

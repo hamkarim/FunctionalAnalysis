@@ -4,77 +4,69 @@
 \RequirePackage{amsmath}
 \RequirePackage{amssymb}
 \RequirePackage{amsthm}
+\RequirePackage[a4paper]{geometry}
+\RequirePackage{fancyhdr}
+\RequirePackage{cite}
 \RequirePackage[pdftex]{graphicx}
 \RequirePackage{epstopdf}
 
-\newtheorem{unswlem}{Lemma}
-\newtheorem{unswprp}{Proposition}
-\newtheorem{unswthm}{Theorem}
-\newtheorem{unswdef}{Definition}
-\newtheorem{unswcor}{Corollary}
-\newtheorem{unswrem}{Remark}
-
-\setlength{\parindent}{0pt}
-
-\newwrite\plotfile
-\newcounter{plotcounter}
-
 \LoadClass{article}
+\setlength\parindent{0pt}
+\setlength{\parskip}{5mm plus4mm minus3mm}
+
+\def\author#1{\def\@author{#1}}
+\def\subject#1{\def\@subject{#1}}
+\def\title#1{\def\@title{#1}}
+\def\studentno#1{\def\@studentno{#1}}
+\def\supervisor#1{\def\@supervisor{#1}}
+
+%This puts headers above and below each page.
+\pagestyle{fancy}
+\fancyfoot[l]{\@author}
+\fancyfoot[r]{\today}
+\fancyhead[l]{The University of New South Wales}
+\fancyhead[r]{\@subject}
+
 
 \newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
 
-
-
-\newcommand{\im}{\operatorname{im}}
-\newcommand{\isom}{\cong}
-\newcommand{\modulo}[1]{\;\operatorname{mod} #1}
-\newcommand{\Char}{\operatorname{char}}
-\newcommand{\tr}{\operatorname{tr}}
-\newcommand{\dist}{\operatorname{dist}_{L^\infty}}
-
-\newcommand{\legendre}[2]{\left(\frac{#1}{#2}\right)}
-
-
-
 %arguments in the order, author, student number, subject, title
-\newcommand{\unswtitle}[4]{
-\begin{titlepage}
-\begin{center}
-% Upper part of the page. The '~' is needed because \\
-% only works if a paragraph has started.
-\includegraphics[width=1\textwidth]{artwork/unswlogo}~\\[1cm]
-% Upper part of the page. The '~' is needed because \\
-% only works if a paragraph has started.
-\includegraphics[width=0.4\textwidth]{artwork/mathslogo}~\\[1cm]
-\textsc{\LARGE University of New South Wales}\\[0.5cm]
-\textsc{\large School of Mathematics and Statistics}\\[0.5cm]
-% Title
-\HRule \\[0.4cm]
-{ \huge \bfseries #4}\\[0.2cm]
-{ \Large #3 }\\[0.2cm]
-\HRule \\[1.5cm]
-% Author and supervisor
-\begin{minipage}{0.4\textwidth}
-\begin{flushleft} \large
-\emph{Author:}\\
-#1\\
-\end{flushleft}
-\end{minipage}
-\begin{minipage}{0.4\textwidth}
-\begin{flushright} \large
-\emph{Student Number:}\\
-#2
-\end{flushright}
-\end{minipage}
-\vfill
-\end{center}
-\end{titlepage}
+\newcommand{\unswtitle}{
+	\begin{titlepage}
+	\begin{center}
+	% Upper part of the page. The '~' is needed because \\
+	% only works if a paragraph has started.
+	\includegraphics[width=1\textwidth]{artwork/unswlogo}~\\[0.5cm]
+	% Upper part of the page. The '~' is needed because \\
+	% only works if a paragraph has started.
+	\includegraphics[width=0.4\textwidth]{artwork/mathslogo}~\\[1cm]
+	\textsc{\LARGE University of New South Wales}\\[0.5cm]
+	\textsc{\large School of Mathematics and Statistics}\\[0.5cm]
+	% Title
+	\HRule \\[0.4cm]
+	{ \huge \bfseries \@title}\\[0.2cm]
+	{ \Large \@subject }\\[0.2cm]
+	\HRule \\[1.5cm]
+	% Author and supervisor
+	\begin{minipage}[t]{0.4\textwidth}
+	\begin{flushleft} \large
+	\emph{Author:}\\
+	\@author\\[0.4cm]
+    \ifx\@supervisor\undefined
+    \else
+        \emph{Supervisor:}\\
+        \@supervisor
+    \fi
+	\end{flushleft}
+	\end{minipage}
+	\begin{minipage}[t]{0.4\textwidth}
+	\begin{flushright} \large
+	\emph{Student Number:}\\
+	\@studentno
+	\end{flushright}
+	\end{minipage}
+	\vfill
+	\end{center}
+	\end{titlepage}
 }
-
-\newcommand{\unswmathematicaplot}[2]{
-\immediate\openout\plotfile="mathematicaplot.m"
-\immediate\write\plotfile{Export["#2.eps", Plot[#1]]}
-\immediate\closeout\plotfile
-\immediate\write18{math -script "mathematicaplot.m"}
-\includegraphics[width=0.5\textwidth]{#2}~\\[1cm]
-}
+\endinput
