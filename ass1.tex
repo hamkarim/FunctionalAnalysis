@@ -44,10 +44,12 @@
 \newcommand{\legendre}[2]{\left(\frac{#1}{#2}\right)}
 
 \newcommand{\Span}{\operatorname{span}}
+\newcommand{\proj}{\operatorname{proj}}
 
 \begin{document}
     \maketitle{}
     \section*{Question 1}
+    For this question, $t$ is a variable defined on $[0,1]$.
     \begin{theorem}
         Suppose that $B_k$ is the $k$th Bernoulli polynomial,
         and $e_n(t) = \exp(2\pi i n t)$. Then for $n \neq 0$, we have
@@ -60,9 +62,7 @@
         \end{equation*}
     \end{theorem}
     \begin{proof}
-        Put $n\neq 0$.
-    
-        Consider first $k = 1$. By definition,
+        Put $n\neq 0$. Consider first $k = 1$. By definition,
         $B_1(t) = t-\frac{1}{2}$. Then,
         \begin{align*}
             \langle B_1,e_n \rangle &= \int_{0}^1\! (x-\frac{1}{2})e^{-2\pi inx}dx\\
@@ -72,8 +72,7 @@
         \begin{equation*}
             \int_{0}^1\!xe^{-2\pi inx}dx = -\frac{1}{2\pi i n}.
         \end{equation*}
-        Hence the result holds for $k = 1$. Suppose now that $k > 1$.
-        
+        Hence the result holds for $k = 1$. Suppose now that $k > 1$.       
         The $k$th Bernoulli polynomial can be found by the fomula $kB_{k-1}(t) = B'_k(t)$
         when $k > 1$.
         Since $B_k(0) = B_k(1)$, and $e_n(0) = e_n(1)$, we have the relation
@@ -96,16 +95,14 @@
         \begin{equation*}
             \langle B_k,e_n \rangle = -\frac{k!}{(2\pi in)^k}
         \end{equation*}
-        for $n\neq 0$.
-        
+        for $n\neq 0$.        
         For $n = 0$, we have
         \begin{align*}
             \langle B_k,e_0\rangle &= \int_0^1\!B_k(x)dx\\
             &= \int_0^1\frac{1}{k+1}B'_{k+1}(x)dx\\
-            &= \frac{1}{k+1}(B_{k+1}(1)-B_{k+1}(0))\\
-            &= 0
+            &= \frac{1}{k+1}(B_{k+1}(1)-B_{k+1}(0)).\\
         \end{align*} 
-        as required.
+        Hence since $B_{k+1}(1) = B_{k+1}(0)$, we find $\langle B_k, e_0\rangle = 0$ as required.
         $\Box$
     \end{proof} 
     Hence we have the expansion,
@@ -114,15 +111,14 @@
     \end{equation*}
     
     \section*{Question 2}
-    For this question, $t$ is a variable defined on $[-1,1]$, and we consider
-    functions in $L^2(-1,1)$.
+    For this question, $t$ is a variable defined on $[-1,1]$.
         \begin{definition}
-            The $n$th Legendre polynomials $L_n$ is
+            For $n\geq 0$, the $n$th (normalised) Legendre polynomial $L_n$ is
             \begin{equation*}
                 L_n(t) := \frac{1}{2^n n!}\sqrt{\frac{2n+1}{2}}\frac{d^n}{dx^n}[(t^2-1)^n]
             \end{equation*}
-            and $L_0(t) := 1$.
-            Define $v_n(t) = t^n$.
+            and $L_0(t) := \frac{1}{2}$.
+            Define $v_n(t) = t^n$. Note that $\|L_n\|_{L^2(-1,1)} = 1$.
         \end{definition}
         
         \begin{lemma}
@@ -131,13 +127,13 @@
                 \langle L_n,v_m\rangle  = \begin{cases}
                     0\;\text{ if }n>m\\
                     0\;\text{ if }m-n\text{ is odd and positive.}\\
-                    \frac{1}{2^n} \sqrt{\frac{2n+1}{2}}{m\choose n}B(\frac{m-n+1}{2},n+1)\;\text{ if }m-n\text{ is even and positive.}
+                    \frac{1}{2^n} \sqrt{\frac{2n+1}{2}}{m\choose n}B(\frac{m-n+1}{2},n+1)\;\text{ if }m-n\text{ is even and non-negative.}
                 \end{cases}
             \end{equation*}
-               where $B$ is the beta function.
+               where $B$ is the Beta function.
         \end{lemma}
         \begin{proof}
-            Since the function $f(t) = t^2-1$ has $f(0) = f(1) = 0$, we can use the integration
+            Since the function $f(t) = t^2-1$ has $f(-1) = f(1) = 0$, we can use the integration
             by parts rule,
             \begin{align*}
                 \langle L_n,v_m\rangle &= \frac{1}{2^nn!}\sqrt{\frac{2n+1}{2}}\int_{-1}^1\frac{d^n}{dx^n}[(x^2-1)^n]x^mdx\\
@@ -156,7 +152,7 @@
             \begin{equation*}
                 \langle L_n,v_m\rangle = \frac{1}{2^n}{m\choose n}\sqrt{\frac{2n+1}{2}}\int_{0}^1(1-u)^nu^{\frac{m-n}{2}-\frac{1}{2}}du.
             \end{equation*}
-            Hence we have by the definition of the beta function,
+            Hence we have by the definition of the Beta function,
             \begin{equation*}
                 \langle L_n,v_m\rangle = \frac{1}{2^n}{m\choose n}\sqrt{\frac{2n+1}{2}}B(\frac{m-n+1}{2},n+1)
             \end{equation*}
@@ -164,7 +160,7 @@
         \end{proof}
         
         \begin{theorem}
-            The set $\{L_n\}_{n=1}^\infty$, when normalised, is the result of Gram-Schmidt orthonormalisation
+            The set $\{L_n\}_{n=1}^\infty$ is the result of Gram-Schmidt orthonormalisation
             applied to the set $\{v_n\}_{n=0}^\infty$. 
         \end{theorem}
         \begin{proof}
@@ -174,31 +170,17 @@
                 B_0 &= v_0\\
                 B_n &= v_n-\sum_{k=0}^{n-1} \frac{\langle B_k,v_n\rangle}{\langle B_k,B_k\rangle} B_k.
             \end{align*}
-            
-            Write $P_n = \Span\{v_k\}_{k=0}^n$ as the set of
+  
+            Denote $P_n = \Span\{v_k\}_{k=0}^n$ as the set of
             polynomials of degree at most $n$. Note that by construction $\Span\{B_k\}_{k=0}^n = P_n$.
+            Denote the orthogonal complement of $P_{n-1}$ in $P_{n}$ as $P_{n-1}^\perp$.
             
-            We show that $B_n$ is parallel $L_n$ for $n\geq 0$. For $n = 0$, we
-            have $B_0(t) = 1 = L_0(t)$.
-                        
-            By construction, $B_n$ is in the orthogonal complement of $P_{n-1}$
-            in $P_n$. Since $P_{n-1}$ is $n$ dimensional, and $P_n$ is $n+1$
-            dimensional, the orthogonal complement of $P_{n-1}$
-            in $P_n$ is one dimensional.
-            
-            Hence to show that $L_n$ is parallel
-            to $B_n$ it will be enough to show that $L_n$ lies
-            in the orthogonal complement to $P_{n-1}$ in $P_n$, since then
-            both $B_n$ and $L_n$ lie in the same one dimensional subspace of $P_n$.
-            
-            Clearly since $L_n$ is a polynomial of degree $n$, we have $L_n\in P_n$. 
-            
-            By lemma \ref{innerProduct}, $\rangle L_n,v_k\langle = 0$ for $k < n$.
-            Hence $L_n$ is orthogonal to every element $P_{n-1}$. 
-            
-            
-            
-            
+            We show that $B_n$ is parallel to $L_n$ for $n\geq 0$. For $n = 0$, we
+            have $B_0(t) = 1$, parallel to $L_0(t) = 1/2$. By construction, we have $\langle B_n,v_k\rangle = 0$ for $k < n$.
+            However, $B_n \in P_n$, so $B_n \in P_{n-1}^\perp$. 
+            By lemma \ref{innerProduct}, $\langle L_n,v_k\rangle = 0$ for $k < n$.
+            Hence $L_n$ is orthogonal to every element of $P_{n-1}$. $L_n$
+            is a degree $n$ polynomial, so $L_n \in P_{n-1}^\perp$.
             %, and assume that $B_k$ is parallel to $L_k$ for $k < n$. Then we
             %have
             %\begin{equation*}
@@ -215,23 +197,32 @@
             
             %That is, $\langle L_k, B_n\rangle$ is nonzero only when $k = n$.
             %Since the $L_n$ form a complete orthonormal system,
-            %we therefore have that $B_n$ is parallel to $L_n$.
+            %we therefore have that $B_n$ is parallel to $L_n$. 
             
-            Hence, $L_n$ is parallel to $B_n$. So if we normalise
-            each $L_n$, we obtain the result of Gram-Schmidt orthonormalisation
-            applied to the set $\{v_n\}_{n=0}^\infty$. $\Box$
+            However, $P_{n-1}^\perp$ must be one dimensional, since $P_{n-1}$
+            is an $n$ dimensional subspace of the $n+1$ dimensional space $P_n$. Hence, $L_n$ is parallel to $B_n$. 
+            Hence since $\|L_n\| = 1$, we have $L_n = \tau B_n/\|B_n\|$ for some
+            $\tau \in \mathbb{C}$ with $|\tau| = 1$. 
+            
+            However $\tau = 1$, since by construction the polynomials $L_n$
+            and $B_n$ have real coefficients, and the $n$th degree
+            term of $B_n$ is $t^n$, and also the $n$th degree
+            term of $L_n$ is positive.
+            
+            This proves that the sequence $\{L_n\}_{n=0}^\infty$
+            is exactly the sequence $\{B_n/\|B_n\|\}_{n=0}^\infty$. $\Box$
         \end{proof}
         
         
         
         \section*{Question 3}
-        
-        Lemma \ref{innerProduct} gives us the decomposition of $v_n$ in terms of $L_n$. So,
+        Question $2$ proves that the set $\{L_k\}_{k=0}^\infty$
+        form an orthonormal basis for the set of polynomials of degree at most $n$. Hence,
         \begin{align*}
             v_m &= \sum_{n=0}^\infty \langle L_n,v_m\rangle L_n\\
             &= \sum_{n=0}^m\langle L_n,v_m\rangle L_n
         \end{align*}
-        since $\langle L_n,v_m\rangle$ vanishes for $n>m$.
+        since $\langle L_n,v_m\rangle$ vanishes for $n>m$ by lemma \ref{innerProduct}
         So if $m$ is even, we have
         \begin{equation*}
             v_m = \sum_{k=0}^{m/2}\frac{1}{2^{2k}} {m\choose 2k}\sqrt{\frac{4k+1}{2}}B(\frac{m-2k+1}{2},n+1)L_{2k}.
