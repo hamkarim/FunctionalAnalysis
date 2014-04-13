@@ -10,10 +10,112 @@
 \studentno{3375335}
 
 
+\newcommand{\Real}{\operatorname{Re}}
+\newcommand{\Img}{\operatorname{Im}}
+\newcommand{\lan}{\langle}
+\newcommand{\ran}{\rangle}
+
 \setlength\parindent{0pt}
 
 \unswtitle{}
 
 \section*{Question 1}
+\begin{theorem}
+    Suppose $(V,\lan,\ran)$ is a complex inner product space. We assume that $\lan,\ran$
+    is linear in the first argument. Then
+    if $T \in L(V)$, and for all $x \in V$, $\lan x,Tx\ran \geq 0$. Then $T = T^*$.
+\end{theorem}
+\begin{proof}
+    Let $x,y \in V$. Then,
+    \begin{equation*}
+        \lan x+iy,T(x+iy)\ran \geq 0.
+    \end{equation*}
+    Expanding this out, we find
+    \begin{equation*}
+        \lan x,Tx\ra + \lan y,Ty\ra + i\lan y,Tx\ran-i\lan x,Ty\ran \geq 0. 
+    \end{equation*}
+    Hence the number
+    \begin{equation*}
+        i(\lan y,Tx\ran-\lan x,Ty\ran)
+    \end{equation*}
+    is real, so choose $r \in \Rl$ such that
+    \begin{equation}
+    \label{re1}
+        \lan y,Tx\ran -\lan x,Ty\ran = ir.
+    \end{equation}
+    So take conjugates,
+    \begin{equation}
+    \label{re2}
+        \lan Tx,y\ran-\lan Ty,x\ran = -ir.
+    \end{equation}
+    Then add equation \ref{re1} to equation \ref{re2} to find
+    \begin{align*}
+        \lan y,Tx\ra - \lan Ty,x\ran &= \lan x,Ty\ran-\lan Tx,y\ra\\
+        &= -\overline{\lan y,Tx\ran - \lan Ty,x\ran}.
+    \end{align*}
+    So therefore,
+    \begin{equation*}
+        \Real(\lan y,Tx\ran - \lan Ty,x\ran) = 0.
+    \end{equation*}
+    
+    Now put $z = iy$. Since $x$ and $y$ were arbitrary, we then have
+    \begin{equation*}
+        \Real(\lan z,Tx\ran - \lan Tz,x\ran) = 0.
+    \end{equation*}
+    So,
+    \begin{equation*}
+        \Real[i(\lan y,Tx\ran-\lan Ty,x\ran)] = 0.
+    \end{equation*}
+    Thus,
+    \begin{equation*}
+        \Img(\lan y,Tx\ran-\lan Ty,x\ran) = 0.
+    \end{equation*}
+    Hence $\lan y,Tx\ran = \lan Ty,x\ra$ for all $x,y \in V$. So $T = T^*$.
+\end{proof}
+
+
+\section*{Question 2}
+\subsection*{Part 1}
+\begin{lemma}
+\label{shiftSum}
+    Suppose that the sequence of complex numbers $\{a_n\}_{n\in\mathbb{Z}}$ is absolutely summable. That is,
+    \begin{equation*}
+        \sum_{n\in \mathbb{Z}} |a_n| \leq \infty.
+    \end{equation*}
+    Then the operator
+    \begin{equation*}
+        T = \sum_{n\geq0} a_n S^n + \sum_{n> 0} a_{-n} (S^*)^n
+    \end{equation*}
+    exists and is a bounded linear operator
+    on $\ell^2(\mathbb{N})$, where $S$ is the forward shift operator on $\ell^2(\mathbb{N})$.
+\end{lemma}
+\begin{proof}
+    Since $\|S\| = \| S^*\| = 1$, the series
+    \begin{equation*}
+        \sum_{n\geq0} \|a_n S^n\| + \sum_{n> 0} \|a_{-n} (S^*)^n\|
+    \end{equation*}
+    is finite. Hence by the completeness of $\mathcal{B}(\ell^2(\mathbb{N}))$, the operator
+    $T$ exists and is bounded.
+\end{proof}
+\begin{proposition}
+    If $\{a_n\}_{n\in \mathbb{Z}}$ is an absolutely summable sequence as in lemma
+    \ref{shiftSum}. Then the infinite matrix $(a_{j-k})_{j,k\geq 0}$ defines
+    a bounded linear operator on $\mathcal{B}(\ell^2(\mathbb{N}))$.
+\end{proposition}
+\begin{proof}
+    Let $T_A$ be the (possibly not everywhere defined) operator given by the matrix
+    $(a_{j-k})_{j,k\geq 0}$. Then, 
+    \begin{equation*}
+        T_A = \sum_{n\geq0} a_n S^n + \sum_{n> 0} a_{-n} (S^*)^n
+    \end{equation*}
+    hence $T_A$ is bounded by lemma \ref{shiftSum}.
+\end{equation*}
+\end{proof}
+\subsection*{Part 2}
+\begin{lemma}
+    Let $\Hilb = L^2(0,1)$, and $\varphi \in L^\infty(0,1)$. Let $M_\varphi$ be the pointwise
+    multiplication operator by $\varphi$ defined on $\Hilb$.
+\end{lemma}
+
 
 \end{document}
