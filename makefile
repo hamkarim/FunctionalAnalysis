@@ -18,7 +18,7 @@ spell: ass$(FILE).tex
 	ispell $<
 	
 class_update:
-	cd ..; \
+	cd ..; 
 	git submodule update --init --recursive;
 #	cd -;
 	cp -r ../UNSW_Latex/artwork artwork;
