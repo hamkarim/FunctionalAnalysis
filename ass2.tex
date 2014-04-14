@@ -14,6 +14,9 @@
 \newcommand{\Img}{\operatorname{Im}}
 \newcommand{\lan}{\langle}
 \newcommand{\ran}{\rangle}
+\newcommand{\Proj}{\mathbb{P}_+}
+\newcommand{\isom}{\cong}
+
 
 \unswtitle{}
 
@@ -110,9 +113,11 @@
 \end{proof}
 \subsection*{Part 2}
 \begin{definition}
-    Let $e_n(t) = exp(2\pi i n t)$, and if $\varphi \in L^\infty(0,1)$,
+    Let $e_n(t) = exp(2\pi i n t)$, and if $\varphi \in C[0,1]$,
     and the multiplication operator $M_\varphi:L^2(0,1)\rightarrow L^2(0,1)$ is defined by $M_\varphi f(t) = \varphi(t)f(t)$
     for all $t$ in a dense subset of $(0,1)$.    
+    
+    Denote the fourier coefficients of $f \in L^2(0,1)$ by $\hat{f}(n) = \lan f,e_n\ran$.
 \end{definition}
 \begin{definition}
     The Riesz projection, $\mathbb{P}_+:L^2(0,1)\rightarrow L^2(0,1)$ is the linear map given by
@@ -122,17 +127,74 @@
     This is well defined since $\{e_n\}_{n\in mathbb{Z}}$ is a complete orthonormal basis.
 \end{definition}
 \begin{lemma}
-    Let $\Hlbt = L^2(0,1)$, and $\varphi \in L^\infty(0,1)$. Suppose that $\varphi$
-    has fourier transform,
-    \begin{equation*}
-        \hat{\varphi}(n) = \int_0^1 \varphi(t)\exp(-2\pi i nt)dt.
-    \end{equation*}
-    Now consider the operator $T:\ell^2\rightarrow \ell^2$, defined as an infinite matrix $(\hat{\varphi}(j-k))_{j,k\geq 0}$.
-    
-    Then $T$ is bounded.
+    The Riesz projection is bounded, and an orthogonal projection.
 \end{lemma}
 \begin{proof}
+    By the Parseval identity,
+    \begin{align*}
+        \| \Proj \sum_{n\mathbb{Z}} a_n e_n\|^2 &= \sum_{n\geq 0} |a_n|^2\\
+        &\leq \sum_{n\in\mathbb{Z}}|a_n|^2\\
+        &= \|\sum_{n\in\mathbb{Z}} a_ne_n\|^2.
+    \end{align*}
+    Clearly $\Proj^2 = \Proj$, and 
+    \begin{equation*}
+        \lan e_n,\Proj e_k\ran = \begin{cases}
+            1\text{ if k }\geq 0\text{ and }n = k\\
+            0\text{otherwise}
+        \end{cases}
+    \end{equation*}
+    which is identical to $\lan\Proj e_n,e_k\ran$. Hence $\Proj = \Proj^*$.    
+\end{proof}
+\begin{definition}
+    Since $\Proj$ is an orthogonal projection, $\Proj L^2(0,1)$ is a closed
+    subspace, hence a Hilbert space. Let $\Hlbt = \Proj L^2(0,1)$. 
+\end{definition}
+\begin{remark}
+    $\Hlbt$ has basis $\{e_n\}_{n\geq 0}$ and $\Hlbt \isom \ell^2(\mathbb{N})$
+    since the map $n\mapsto e_n$ is an isometric isomorphism.
+\end{remark}
+\begin{lemma}
+\label{gammaMatrix}
+    Let $\varphi \in C[0,1]$. Then the operator $\Gamma_\varphi := \Proj M_\varphi :\Hlbt\rightarrow\Hlbt$
+    is a bounded linear operator, represented in the basis $\{e_n\}_{n\geq 0}$
+    of $\Hlbt$ by the infinite Toeplitz matrix $(\hat{\varphi(k-n)})_{n,k\geq 0}$.
+\end{lemma}
+\begin{proof}
+    Since $\varphi$ is continuous on $[0,1]$, then $M_\varphi$ is bounded. Hence since $\Proj$
+    is bounded, $\Gamma_\varphi$ is bounded. 
     
+    Now for $n,k\geq 0$,
+    \begin{align*}
+        \lan \Gamma_\varphi e_n,e_k\ran &= \sum_{j\geq0} \lan \hat{\varphi(j)}e_{n+j},e_k\ran\\
+        &= \sum_{j\geq 0} \hat{\varphi(j)} \lan e_{n+j},e_k\ran\\
+        &= \hat{\varphi(k-n)}.
+    \end{align*}
+    
+    Hence, if $f \in \Hlbt$, then
+    \begin{align*}
+        \hat{\Gamma_\varphi f}(n) = \sum_{j\geq 0} \hat{\varphi(n-j)}\hat{f}(j).
+    \end{align*}
+    So $\Gamma_\varphi$ is given by the required infinite Toeplitz matrix.
+\end{proof}
+\begin{theorem}
+    There is a Toeplitz operator on $\ell^2$ with infinite matrix $(a_{n-k})_{n,k\geq 0}$
+    where the sum $\sum_{n\in \mathbb{Z}} |a_n|$ does not converge.
+\end{theorem}
+\begin{proof}
+    By lemma \ref{gammaMatrix}, it is sufficient to find $\varphi \in C[0,1]$
+    where the sum $\sum_{n\in \mathbb{Z}} |\hat{\varphi}(n)|$
+    does not converge.
+    Consider
+    \begin{equation*}
+        \varphi(t) = t.
+    \end{equation*}
+    Then
+    \begin{equation*}
+        \hat{\varphi}(n) = \begin{cases}
+            -\frac{1}{2\pi i n}\text{ if }n\neq 0\\
+            0\text{ if }n = 0.
+        \end{cases}
+    \end{equation*}
 \end{proof}
 
 \begin{theorem}
