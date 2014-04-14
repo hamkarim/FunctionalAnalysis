@@ -15,8 +15,6 @@
 \newcommand{\lan}{\langle}
 \newcommand{\ran}{\rangle}
 
-\setlength\parindent{0pt}
-
 \unswtitle{}
 
 \section*{Question 1}
@@ -109,13 +107,90 @@
         T_A = \sum_{n\geq0} a_n S^n + \sum_{n> 0} a_{-n} (S^*)^n
     \end{equation*}
     hence $T_A$ is bounded by lemma \ref{shiftSum}.
-\end{equation*}
 \end{proof}
 \subsection*{Part 2}
+\begin{definition}
+    Let $e_n(t) = exp(2\pi i n t)$, and if $\varphi \in L^\infty(0,1)$,
+    and the multiplication operator $M_\varphi:L^2(0,1)\rightarrow L^2(0,1)$ is defined by $M_\varphi f(t) = \varphi(t)f(t)$
+    for all $t$ in a dense subset of $(0,1)$.    
+\end{definition}
+\begin{definition}
+    The Riesz projection, $\mathbb{P}_+:L^2(0,1)\rightarrow L^2(0,1)$ is the linear map given by
+    \begin{equation*}
+        \mathbb{P}_+\sum_{n\in\mathbb{Z}} a_ne_n = \sum_{n\geq 0} a_ne_n.
+    \end{equation*}
+    This is well defined since $\{e_n\}_{n\in mathbb{Z}}$ is a complete orthonormal basis.
+\end{definition}
 \begin{lemma}
-    Let $\Hilb = L^2(0,1)$, and $\varphi \in L^\infty(0,1)$. Let $M_\varphi$ be the pointwise
-    multiplication operator by $\varphi$ defined on $\Hilb$.
+    Let $\Hlbt = L^2(0,1)$, and $\varphi \in L^\infty(0,1)$. Suppose that $\varphi$
+    has fourier transform,
+    \begin{equation*}
+        \hat{\varphi}(n) = \int_0^1 \varphi(t)\exp(-2\pi i nt)dt.
+    \end{equation*}
+    Now consider the operator $T:\ell^2\rightarrow \ell^2$, defined as an infinite matrix $(\hat{\varphi}(j-k))_{j,k\geq 0}$.
+    
+    Then $T$ is bounded.
 \end{lemma}
+\begin{proof}
+    
+\end{proof}
 
+\begin{theorem}
+    The only Hilbert-Schmidt operator that is a Toeplitz operator
+    is $0$.
+\end{theorem}
+\begin{proof}
+    Suppose that $T$ is a Toeplitz operator. So $T$ has an infinite matrix
+    representation, $(a_{j-k})_{j,k\geq 0}$. If $T$ is Hilbert Schmidt, then
+    \begin{equation*}
+        \sum_{j,k\geq 0} |a_{j-k}|^2 < \infty.
+    \end{equation*}
+    However this sum contains infinitely many terms of $|a_n|^2$ for each $n$.
+    Hence the sum converges if and only if $a_n = 0$ for all $n$.
+    
+    Hence $T = 0$.
+\end{proof} 
+\section*{Question 3}
+For this question, $T$ is a linear operator
+on a Hilbert space $\Hlbt$.
+\begin{proposition}
+\label{3(1)}
+    $(\im T)^\perp = \ker T^*$
+\end{proposition}
+\begin{proof}
+    Suppose $x \in \ker T^*$. Then for all $y \in \Hlbt$,
+    \begin{align*}
+        0 &= \lan T^*x,y\ran\\
+          &= \lan x,Ty\ran.
+    \end{align*}
+    Hence $x \in (\im T)^\perp$. 
+    
+    Now suppose $x \in (\im T)^\perp$. Hence for all
+    $y \in \Hlbt$, 
+    \begin{align*}
+        0 &= \lan Ty,Tx\ran\\
+        &= \lan y,T^*x\ran.
+    \end{align*}
+    Now put $y = T^*x$, and so $\| T^*x\| = 0$. Hence
+    $x \in \ker T^*$.
+\end{proof}
+\begin{proposition}
+    $(\ker T)^\perp = \overline{\im T^*}$.
+\end{proposition}
+\begin{proof}
+    We have from proposition \ref{3(1)} that for
+    any operator $S$, $(\im S)^\perp = \ker S^*$.
+    
+    Put $S = T^*$. Then
+    \begin{equation*}
+        (\im T^*)^\perp = \ker T
+    \end{equation*}
+    Now take the perpendicular complement of both
+    sides,
+    \begin{equation*}
+        \overline{\im T^*} = (\ker T)^\perp
+    \end{equation*}
+    as required.
+\end{proof}
 
 \end{document}
