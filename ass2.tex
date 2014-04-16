@@ -33,7 +33,7 @@
     \end{equation*}
     Expanding this out, we find
     \begin{equation*}
-        \lan x,Tx\ra + \lan y,Ty\ra + i\lan y,Tx\ran-i\lan x,Ty\ran \geq 0. 
+        \lan x,Tx\ran + \lan y,Ty\ran + i\lan y,Tx\ran-i\lan x,Ty\ran \geq 0. 
     \end{equation*}
     Hence the number
     \begin{equation*}
@@ -44,14 +44,14 @@
     \label{re1}
         \lan y,Tx\ran -\lan x,Ty\ran = ir.
     \end{equation}
-    So take conjugates,
+    Then take conjugates,
     \begin{equation}
     \label{re2}
         \lan Tx,y\ran-\lan Ty,x\ran = -ir.
     \end{equation}
     Then add equation \ref{re1} to equation \ref{re2} to find
     \begin{align*}
-        \lan y,Tx\ra - \lan Ty,x\ran &= \lan x,Ty\ran-\lan Tx,y\ra\\
+        \lan y,Tx\ran - \lan Ty,x\ran &= \lan x,Ty\ran-\lan Tx,y\ran\\
         &= -\overline{\lan y,Tx\ran - \lan Ty,x\ran}.
     \end{align*}
     So therefore,
@@ -71,7 +71,7 @@
     \begin{equation*}
         \Img(\lan y,Tx\ran-\lan Ty,x\ran) = 0.
     \end{equation*}
-    Hence $\lan y,Tx\ran = \lan Ty,x\ra$ for all $x,y \in V$. So $T = T^*$.
+    Hence $\lan y,Tx\ran = \lan Ty,x\ran$ for all $x,y \in V$. So $T = T^*$.
 \end{proof}
 
 
@@ -81,7 +81,7 @@
 \label{shiftSum}
     Suppose that the sequence of complex numbers $\{a_n\}_{n\in\mathbb{Z}}$ is absolutely summable. That is,
     \begin{equation*}
-        \sum_{n\in \mathbb{Z}} |a_n| \leq \infty.
+        \sum_{n\in \mathbb{Z}} |a_n| < \infty.
     \end{equation*}
     Then the operator
     \begin{equation*}
@@ -95,7 +95,7 @@
     \begin{equation*}
         \sum_{n\geq0} \|a_n S^n\| + \sum_{n> 0} \|a_{-n} (S^*)^n\|
     \end{equation*}
-    is finite. Hence by the completeness of $\mathcal{B}(\ell^2(\mathbb{N}))$, the operator
+    converges. Hence by the completeness of $\mathcal{B}(\ell^2(\mathbb{N}))$, the operator
     $T$ exists and is bounded.
 \end{proof}
 \begin{proposition}
@@ -104,16 +104,23 @@
     a bounded linear operator on $\mathcal{B}(\ell^2(\mathbb{N}))$.
 \end{proposition}
 \begin{proof}
-    Let $T_A$ be the (possibly not everywhere defined) operator given by the matrix
-    $(a_{j-k})_{j,k\geq 0}$. Then, 
+    Consider the operator 
     \begin{equation*}
         T_A = \sum_{n\geq0} a_n S^n + \sum_{n> 0} a_{-n} (S^*)^n
     \end{equation*}
-    hence $T_A$ is bounded by lemma \ref{shiftSum}.
+    Note that $T_A$ is bounded by lemma \ref{shiftSum}.
+    
+    Suppose $x = (x_0,x_2,x_3,\ldots) \in \ell^2$. Then
+    \begin{align*}
+        T_A(x)(n) = \sum_{j \geq 0} a_{n-j}x_j.
+    \end{align*}
+    So $T_A$ is given by the infinite matrix $(a_{j-k})_{j,k\geq 0}$. 
+    
+    Hence the infinite matrix defines a bounded linear operator.    
 \end{proof}
 \subsection*{Part 2}
 \begin{definition}
-    Let $e_n(t) = exp(2\pi i n t)$, and if $\varphi \in C[0,1]$,
+    Let $e_n(t) = \exp(2\pi i n t)$, and if $\varphi \in C[0,1]$,
     and the multiplication operator $M_\varphi:L^2(0,1)\rightarrow L^2(0,1)$ is defined by $M_\varphi f(t) = \varphi(t)f(t)$
     for all $t$ in a dense subset of $(0,1)$.    
     
@@ -124,7 +131,7 @@
     \begin{equation*}
         \mathbb{P}_+\sum_{n\in\mathbb{Z}} a_ne_n = \sum_{n\geq 0} a_ne_n.
     \end{equation*}
-    This is well defined since $\{e_n\}_{n\in mathbb{Z}}$ is a complete orthonormal basis.
+    This is well defined since $\{e_n\}_{n\in \mathbb{Z}}$ is a complete orthonormal basis.
 \end{definition}
 \begin{lemma}
     The Riesz projection is bounded, and an orthogonal projection.
@@ -136,6 +143,7 @@
         &\leq \sum_{n\in\mathbb{Z}}|a_n|^2\\
         &= \|\sum_{n\in\mathbb{Z}} a_ne_n\|^2.
     \end{align*}
+    Hence $\Proj$ is bounded.
     Clearly $\Proj^2 = \Proj$, and 
     \begin{equation*}
         \lan e_n,\Proj e_k\ran = \begin{cases}
@@ -144,6 +152,7 @@
         \end{cases}
     \end{equation*}
     which is identical to $\lan\Proj e_n,e_k\ran$. Hence $\Proj = \Proj^*$.    
+    So $\Proj$ is an orthogonal projection.
 \end{proof}
 \begin{definition}
     Since $\Proj$ is an orthogonal projection, $\Proj L^2(0,1)$ is a closed
@@ -166,13 +175,13 @@
     Now for $n,k\geq 0$,
     \begin{align*}
         \lan \Gamma_\varphi e_n,e_k\ran &= \sum_{j\geq0} \lan \hat{\varphi(j)}e_{n+j},e_k\ran\\
-        &= \sum_{j\geq 0} \hat{\varphi(j)} \lan e_{n+j},e_k\ran\\
-        &= \hat{\varphi(k-n)}.
+        &= \sum_{j\geq 0} \hat{\varphi}(j) \lan e_{n+j},e_k\ran\\
+        &= \hat{\varphi}(k-n).
     \end{align*}
     
     Hence, if $f \in \Hlbt$, then
     \begin{align*}
-        \hat{\Gamma_\varphi f}(n) = \sum_{j\geq 0} \hat{\varphi(n-j)}\hat{f}(j).
+        \widehat{\Gamma_\varphi f}(n) = \sum_{j\geq 0} \hat{\varphi(n-j)}\hat{f}(j).
     \end{align*}
     So $\Gamma_\varphi$ is given by the required infinite Toeplitz matrix.
 \end{proof}
@@ -230,10 +239,10 @@ on a Hilbert space $\Hlbt$.
     Now suppose $x \in (\im T)^\perp$. Hence for all
     $y \in \Hlbt$, 
     \begin{align*}
-        0 &= \lan Ty,Tx\ran\\
+        0 &= \lan Ty,x\ran\\
         &= \lan y,T^*x\ran.
     \end{align*}
-    Now put $y = T^*x$, and so $\| T^*x\| = 0$. Hence
+    Now put $y = T^*x$, and so $\lan T^*x,T^*x\ran = \| T^*x\|^2 = 0$. Hence
     $x \in \ker T^*$.
 \end{proof}
 \begin{proposition}
