@@ -1,6 +1,6 @@
 COMP = pdflatex
 READ = evince
-FILE = 2
+FILE = 3
 
 ass$(FILE).pdf: ass$(FILE).tex unswmaths.cls
 	$(COMP) $<
