@@ -20,7 +20,57 @@
 
 \unswtitle{}
 \section*{Question 1}
-For this question, $X$ is a normed vector space and $X_0$ is a closed subspace.
+For this question, $X$ is a Banach space and $X_0$ is a closed subspace.
+\begin{lemma}
+    There is an isometric embedding,
+    \begin{equation*}
+        X_0^\perp \hookrightarrow (X/X_0)^*
+    \end{equation*}
+\end{lemma}
+\begin{proof}
+    Define $\rho:X_0^\perp \rightarrow (X/X_0)^*$ as follows:
+    \begin{equation*}
+        \rho(f)(x+X_0) = f(x).
+    \end{equation*}
+    For $f \in X_0^\perp$ and $x + X_0 \in X/X_0$. This is well defined,
+    since if we chose a different coset representative, $x' + X_0 = x+X_0$, then
+    $f(x) = f(x')$ since $X_0 \subset \ker f$ as $f \in X_0^\perp$.
+    
+    $\rho$ is clearly linear, we need only prove that it is an isometry. That is,
+    we must prove
+    \begin{equation*}
+        \| \rho(f) \|_{(X/X_0)^*} = \|f\|_{X^*}.
+    \end{equation*}
+    Or if write the definitions of these norms, we must prove
+    \begin{equation*}
+        \sup_{\|x+X_0\|\leq 1} |f(x)| = \sup_{\|x\|\leq 1} |f(x)|.
+    \end{equation*}
+    
+    Since $\|x+X_0\| \leq \|x\|$, it is clear that
+    \begin{equation*}
+        \sup_{\|x+X_0\|\leq 1} |f(x)| \geq \sup_{\|x\|\leq 1} |f(x)|.
+    \end{equation*}
+    So we must prove the reverse inequality.
+    
+    Suppose $x \in X$ with $\|x+X_0\| < 1$. Then there is a sequence $\{y_n\}_{n=1}^\infty \subset X_0$
+    such that $\|x+y_n\| \rightarrow \|x+X_0\|$ and $\|x+y_n\| < 1$. Then $|f(x)| = |f(x+y_n)|$,
+    there is a point $x'$ in the set $\{ x\; \|x\| \leq 1\}$ such that $|f(x')| = |f(x)|$. 
+    So we can conclude
+    \begin{equation*}
+                \sup_{\|x+X_0\| < 1} |f(x)| \leq \sup_{\|x\|\leq 1} |f(x)|.
+    \end{equation*}
+    Note the strict inequality on the left hand side.
+    
+    Now consider $x \in X$ with $\|x+X_0\| = 1$. Then there is a sequence $x_n+X_0$
+    such that $x_n + X_0\rightarrow x+X_0$ with $\|x_n+X_0\| < 1$. Then $|f(x_n)| \rightarrow |f(x)|$
+    and so we conclude 
+    \begin{equation*}
+                \sup_{\|x+X_0\| \leq 1} |f(x)| \leq \sup_{\|x\|\leq 1} |f(x)|.
+    \end{equation*}
+    
+    Hence $\rho$ is an isometric embedding.
+\end{proof}
+
 \begin{theorem}
     There is an isometric embedding,
     \begin{equation*}
@@ -28,9 +78,9 @@ For this question, $X$ is a normed vector space and $X_0$ is a closed subspace.
     \end{equation*}
 \end{theorem}
 \begin{proof}
-    Define a function $\iota:X/X_\perp \rightarrow (X_0^\perp)^*$ as follows. For $x+X_0 \in X/X_0$, 
-    and $f \in X_0^\perp$, define $\iota(x+X_0)(f) = f(x)$. It is required to prove that this is a well
-    defined function, and an isometry.
+    Since $X_0^\perp \hookrightarrow (X/X_0)^*$ isometrically, $(X/X_0)^{**}\hookrightarrow (X_0^\perp)^*$
+    isometrically. Hence since $X/X_0\hookrightarrow (X/X_0)^{**}$ isometrically,
+    the result follows.    
 \end{proof}
 \section*{Question 2}
 
@@ -60,7 +110,7 @@ Let $X = \ell^1(\mathbb{N})$, and $X_0$ is the subspace defined by
         S((\xi_k)_{k\geq 0}+(\eta_k)_{k\geq 0}) = \sum_{k\geq 0} \xi_k+\eta_k = \sum_{k\geq 0}\xi_k + \sum_{k\geq 0} \eta_k.
     \end{equation*}
     
-    Furthermore, $S$ is bijective. $S$ is surjective since $S(\lambda,0,0,0,\ldots) = \lambda$ for any $\lambda \in \Cmplx$,
+    Furthermore, $S$ is bijective. $S$ is surjective since $S(\lambda,0,0,0,\ldots) = \lambda$ for any $\lambda \in \Cplx$,
     and if $S(x+X_0) = S(y+X_0)$, then $x-y \in X_0$, so $x+X_0 = y+Y_0$. 
     
     
