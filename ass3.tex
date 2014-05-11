@@ -16,15 +16,16 @@
 \newcommand{\ran}{\rangle}
 \newcommand{\Proj}{\mathbb{P}_+}
 \newcommand{\isom}{\cong}
+\newcommand{\id}{{\operatorname{id}}}
 
 
 \unswtitle{}
 \section*{Question 1}
 For this question, $X$ is a Banach space and $X_0$ is a closed subspace.
 \begin{lemma}
-    There is an isometric embedding,
+    There is an isometric isomorphism,
     \begin{equation*}
-        X_0^\perp \hookrightarrow (X/X_0)^*
+        X_0^\perp \isom (X/X_0)^*
     \end{equation*}
 \end{lemma}
 \begin{proof}
@@ -69,6 +70,16 @@ For this question, $X$ is a Banach space and $X_0$ is a closed subspace.
     \end{equation*}
     
     Hence $\rho$ is an isometric embedding.
+    
+    To show that $\rho$ is surjective, we consider
+    \begin{equation*}
+        \pi: (X/X_0)^*\rightarrow X_0^\perp
+    \end{equation*}
+    given by $\pi(f)(x) = f(x+X_0)$ for $f \in (X/X_0)^*$ and $x \in X$.
+    
+    See that $\pi\circ\rho = \id_{X_0^\perp}$ and $\rho\circ\pi = \id_{(X/X_0)^*}$. 
+    
+    Hence $\rho$ has a inverse, so is an isometric isomorphism.    
 \end{proof}
 
 \begin{theorem}
@@ -78,12 +89,33 @@ For this question, $X$ is a Banach space and $X_0$ is a closed subspace.
     \end{equation*}
 \end{theorem}
 \begin{proof}
-    Since $X_0^\perp \hookrightarrow (X/X_0)^*$ isometrically, $(X/X_0)^{**}\hookrightarrow (X_0^\perp)^*$
-    isometrically. Hence since $X/X_0\hookrightarrow (X/X_0)^{**}$ isometrically,
-    the result follows.    
+    Since $X_0^\perp \isom (X/X_0)^*$ is an isometric isomorphism, we have $(X/X_0)^{**} \isom (X_0^\perp)^*$. 
+    Hence since $X/X_0\hookrightarrow (X/X_0)^{**}$ isometrically,
+    the result follows.
 \end{proof}
 \section*{Question 2}
-
+\begin{theorem}
+    Suppose $T:X\rightarrow Y$ is a linear mapping between normed spaces $X$ and $Y$. Then $T$ is bounded
+    if and only if $T$ has the property if that if $U$ is open in $Y$ then $T^{-1}(U)$ is open in $X$.
+\end{theorem}
+\begin{proof}
+    Suppose that $T$ is bounded, and let $U\subset Y$ be an open set with $T^{-1}(U) \neq \emptyset$. 
+    
+    Then let $x \in T^{-1}(U)$, and let $\epsilon$ be small enough such that $B(Tx,\epsilon) \subset U$. 
+    
+    Then choose $\epsilon' = \epsilon/\|T\|$. Then if $y \in B(x, \epsilon')$, 
+    \begin{equation*}
+        \|Ty-Tx\| \leq \|T\|\|y-x\| \leq \epsilon.
+    \end{equation*}
+    Hence $Ty \in B(Tx,\epsilon)$, so $Ty \in U$. Therefore $B(x,\epsilon') \subset T^{-1}(U)$, and so $T^{-1}(U)$
+    is open.
+    
+    Conversely, suppose that $T$ has the property that $T^{-1}(U)$ is open in $X$ whenever $U$ is open in $Y$.
+    
+    Let $U = B(0,1) \subset Y$. Then since $T^{-1}(U)$ is open, there is some $\epsilon > 0$ such
+    that $B(0,\epsilon) \subset T^{-1}(U)$. Hence, $\|T\| \leq 1/\epsilon$. So $T$ is bounded.
+    
+\end{proof}
 
 \section*{Question 3}
 Let $X = \ell^1(\mathbb{N})$, and $X_0$ is the subspace defined by
