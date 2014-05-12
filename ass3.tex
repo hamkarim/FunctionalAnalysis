@@ -65,7 +65,7 @@ For this question, $X$ is a Banach space and $X_0$ is a closed subspace.
     \begin{equation*}
         \omega(\lambda x) = \lambda \|x+X_0\|_{X/X_0}.
     \end{equation*}
-    $\omega$ is linear, and for any $y \in V$, $|\omega(y)| = \|y+X_0\| \leq \|y\|$.  So $\|omega\| \leq 1$.
+    $\omega$ is linear, and for any $y \in V$, $|\omega(y)| = \|y+X_0\| \leq \|y\|$.  So $\|\omega\| \leq 1$.
     
     So $\omega$ is a linear functional on a subspace $V$ of $X$ bounded by the seminorm $\|\cdot\|_{X/X_0}$. 
     
@@ -191,6 +191,23 @@ Let $X = \ell^1(\mathbb{N})$, and $X_0$ is the subspace defined by
         X/X_0 \isom \Cplx
     \end{equation*}
 \end{theorem}
+%\begin{proof}
+%    Let $S:X\rightarrow \Cplx$ be the function given by
+%    \begin{equation*}
+%        S((\xi)_{k\geq 0}) = \sum_{k\geq 0} \xi_k.
+%    \end{equation*}
+%    $S$ is linear since for $(\xi_k)_{k\geq 0},(\xi'_k)_{k\geq 0} \in X$, and $\alpha \in \Cplx$
+%    \begin{equation*}
+%        S(\alpha(\xi_k)_{k\geq 0}+(\xi'_k)_{k\geq 0}) = \sum_{k\geq 0} (\alpha\xi_k+\xi'_k) = \alpha\sum_{k\geq 0}\xi_k + \sum_{k\geq 0}\xi'_k = \alphs S((\xi_k)_{k\geq 0}) + S((\eta_k)_{k\geq 0}).
+%    \end{equation*}
+%    since we may rearrange the sum as it is absolutely convergent.
+%    
+%    $S$ has image $\Cplx$, since for any $\alpha \in \Cplx$, $S(\alpha,0,0,\ldots) = \alpha$.
+%    
+%    Hence by the first isomorphism theorem, we have $X/X_0 \isom \Cplx$ as complex vector spaces.
+%    
+%    We now show that this is an isometry. Suppose
+%\end{proof}
 \begin{proof}
     Define function $S:X/X_0\rightarrow \Cplx$ by
     \begin{equation*}
