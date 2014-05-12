@@ -122,14 +122,14 @@
 \begin{definition}
     Let $e_n(t) = \exp(2\pi i n t)$, and if $\varphi \in C[0,1]$,
     and the multiplication operator $M_\varphi:L^2(0,1)\rightarrow L^2(0,1)$ is defined by $M_\varphi f(t) = \varphi(t)f(t)$
-    for all $t$ in a dense subset of $(0,1)$.    
+    for $t$ almost everywhere in $(0,1)$.    
     
     Denote the fourier coefficients of $f \in L^2(0,1)$ by $\hat{f}(n) = \lan f,e_n\ran$.
 \end{definition}
 \begin{definition}
     The Riesz projection, $\mathbb{P}_+:L^2(0,1)\rightarrow L^2(0,1)$ is the linear map given by
     \begin{equation*}
-        \mathbb{P}_+\sum_{n\in\mathbb{Z}} a_ne_n = \sum_{n\geq 0} a_ne_n.
+        \mathbb{P}_+\left(\sum_{n\in\mathbb{Z}} a_ne_n\right) = \sum_{n\geq 0} a_ne_n.
     \end{equation*}
     This is well defined since $\{e_n\}_{n\in \mathbb{Z}}$ is a complete orthonormal basis.
 \end{definition}
@@ -166,7 +166,7 @@
 \label{gammaMatrix}
     Let $\varphi \in C[0,1]$. Then the operator $\Gamma_\varphi := \Proj M_\varphi :\Hlbt\rightarrow\Hlbt$
     is a bounded linear operator, represented in the basis $\{e_n\}_{n\geq 0}$
-    of $\Hlbt$ by the infinite Toeplitz matrix $(\hat{\varphi(k-n)})_{n,k\geq 0}$.
+    of $\Hlbt$ by the infinite Toeplitz matrix $(\hat{\varphi}(k-n))_{n,k\geq 0}$.
 \end{lemma}
 \begin{proof}
     Since $\varphi$ is continuous on $[0,1]$, then $M_\varphi$ is bounded. Hence since $\Proj$
@@ -174,14 +174,14 @@
     
     Now for $n,k\geq 0$,
     \begin{align*}
-        \lan \Gamma_\varphi e_n,e_k\ran &= \sum_{j\geq0} \lan \hat{\varphi(j)}e_{n+j},e_k\ran\\
+        \lan \Gamma_\varphi e_n,e_k\ran &= \sum_{j\geq0} \lan \hat{\varphi}(j)e_{n+j},e_k\ran\\
         &= \sum_{j\geq 0} \hat{\varphi}(j) \lan e_{n+j},e_k\ran\\
         &= \hat{\varphi}(k-n).
     \end{align*}
     
     Hence, if $f \in \Hlbt$, then
     \begin{align*}
-        \widehat{\Gamma_\varphi f}(n) = \sum_{j\geq 0} \hat{\varphi(n-j)}\hat{f}(j).
+        \widehat{\Gamma_\varphi f}(n) = \sum_{j\geq 0} \hat{\varphi}(n-j)\hat{f}(j).
     \end{align*}
     So $\Gamma_\varphi$ is given by the required infinite Toeplitz matrix.
 \end{proof}
@@ -201,7 +201,7 @@
     \begin{equation*}
         \hat{\varphi}(n) = \begin{cases}
             -\frac{1}{2\pi i n}\text{ if }n\neq 0\\
-            0\text{ if }n = 0.
+            \frac{1}{2}\text{ if }n = 0.
         \end{cases}
     \end{equation*}
 \end{proof}
