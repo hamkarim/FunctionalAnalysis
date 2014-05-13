@@ -31,13 +31,14 @@ For this question, $X$ is a Banach space and $X_0$ is a closed subspace.
     and $f \in X_0^\perp$. This is a well defined linear map, since if $x' + X_0 = x+X_0$, then 
     $f(x) = f(x')$ since $x-x' \in X_0$ and $f \in X_0^\perp$. $\rho$ is linear, since $\rho(\alpha x+y+X_0) = f(\alpha x+y) = \alpha f(x) + f(y)$
     for $x,y \in X$ and $\alpha \in \Cplx$.
-    
+        
     
     We need to show that $\rho$ is an isometry. That is,
     \begin{equation*}
         \| \rho(x+X_0)\|_{(X_0^\perp)^*} = \| x+X_0\|_{X/X_0}.
     \end{equation*}
-    for any $x \in X$.
+    for any $x \in X$. This will also prove that for each $x\in X$, $\rho(x+X_0)$
+    is bounded, so $\rho$ is indeed well defined.
     
     Expanding this out into definitions, we must prove that
     \begin{equation}
@@ -237,16 +238,25 @@ Let $X = \ell^1(\mathbb{N})$, and $X_0$ is the subspace defined by
     
     Now we must show that this is an isometry.
     
-    Choose $(x_k)_{k\geq 0} \in X$ such that each $x_k \geq 0$
-    and $\sum_{k\geq 0} x_k = S((x_k)_{k\geq 0}) = 1$. For example, $x_k = \frac{1}{2^{k+1}}$.
+    Let $e_0 = (1,0,0,\ldots) \in X$. Then if $x = (\xi_k)_{k\geq 0} \in X_0$, 
+    \begin{align*}
+        \|e_0+x\| &= |1+\xi_0| + \sum_{k\geq 1} |\xi_k|\\
+%        &= |1+\xi_0| + \|x\|-|\xi_0|\\
+%        &\geq 1+\|x\|
+%        &\geq \|e_1\|.
+    \end{align*}
+    Hence, $\|e_0+X_0\|_{X/X_0} = 1$. 
     
-    See that $\|(x_k)_{k\geq 0}+X_0\|_{X/X_0} = 1$, since 
+%    Choose $(x_k)_{k\geq 0} \in X$ such that each $x_k \geq 0$
+%    and $\sum_{k\geq 0} x_k = S((x_k)_{k\geq 0}) = 1$. For example, $x_k = \frac{1}{2^{k+1}}$.
+%    
+%    See that $\|(x_k)_{k\geq 0}+X_0\|_{X/X_0} = 1$, since 
     
     
-    Since we have shown $X/X_0$ is one dimensional, $X/X_0 = \Cplx((x_k)_{k\geq 0}+X_0)$. Hence, any $y + X_0 \in X/X_0$
-    is of the form $y = \lambda((x_k)_{k\geq 0}+X_0)$ for some $\lambda \in \Cplx$. Then,
+    Since we have shown $X/X_0$ is one dimensional, $X/X_0 = \Cplx(x+X_0)$. Hence, for 
+    all $y + X_0 \in X/X_0$, $y = \lambda(x+X_0)$ for some $\lambda \in \Cplx$. Then,
     \begin{equation*}
-        |\Psi(y)| = |S(\lambda((x_k)_{k\geq 0})| = |\lambda| = \|y\|_{X/X_0}.
+        |\Psi(y)| = |S(\lambda(x)| = |\lambda| = \|y\|_{X/X_0}.
     \end{equation*}
     So $\Psi$ is an isometry.
 \end{proof}
