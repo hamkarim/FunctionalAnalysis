@@ -183,7 +183,7 @@ For this question, $X$ is a Banach space and $X_0$ is a closed subspace.
 \section*{Question 3}
 Let $X = \ell^1(\mathbb{N})$, and $X_0$ is the subspace defined by
 \begin{equation*}
-    X_0 = \{ (\xi_k)_{k\geq 0} \;:\;\sum_{k\geq 0} \xi_k = 0\}.
+    X_0 = \{ (\xi_k)_{k\geq 0} \in X \;:\;\sum_{k\geq 0} \xi_k = 0\}.
 \end{equation*}
 \begin{theorem}
     There is an isometric isomorphism,
@@ -209,32 +209,46 @@ Let $X = \ell^1(\mathbb{N})$, and $X_0$ is the subspace defined by
 %    We now show that this is an isometry. Suppose
 %\end{proof}
 \begin{proof}
-    Define function $S:X/X_0\rightarrow \Cplx$ by
+    Define the function $S:X\rightarrow \Cplx$ by
     \begin{equation*}
-        S((\xi_k)_{k\geq 0}+X_0) = \sum_{k\geq 0} \xi_k.
+        S((\xi_k)_{k\geq 0}) = \sum_{k\geq 0} \xi_k.
     \end{equation*}
     This is well defined, since if $(\xi')_{k\geq 0} \in X_0$, then 
+%    \begin{equation*}
+%        S((\xi_k)_{k\geq 0}+(\xi'_k)_{k\geq 0}) = \sum_{k\geq 0} \xi_k+\xi'_k = \sum_{k\geq 0}\xi_k + \sum_{k\geq 0}\xi'_k = S((\xi_k)_{k\geq 0}),
+%    \end{equation*}
+%    
+
+%    $S$ is linear, since if $(\eta_k)_{k\geq0},(\xi_k)_{k\geq0} \in X$ and $\alpha \in \Cplx, then
+%    \begin{equation*}
+%        S((\xi_k)_{k\geq 0}+(\eta_k)_{k\geq 0}) = \sum_{k\geq 0} (\xi_k+\eta_k) = \sum_{k\geq 0}\xi_k + \sum_{k\geq 0} \eta_k
+%    \end{equation*}
+%    since we may rearrange the sum as it is absolutely convergent. 
+
+    $S$ is clearly linear and $S$ is surjective since $S(\lambda,0,0,0,\ldots) = \lambda$ for any $\lambda \in \Cplx$.
+    
+    So by the first isomorphism theorem, there is a vector space isomorphism,
     \begin{equation*}
-        S((\xi_k)_{k\geq 0}+(\xi'_k)_{k\geq 0}) = \sum_{k\geq 0} \xi_k+\xi'_k = \sum_{k\geq 0}\xi_k + \sum_{k\geq 0}\xi'_k = S((\xi_k)_{k\geq 0}),
-    \end{equation*}
-    since we may rearrange the sum as it is absolutely convergent. $S$ is linear, since if $(\eta_k)_{k\geq0},(\xi_k)_{k\geq0} \in X$, then
-    \begin{equation*}
-        S((\xi_k)_{k\geq 0}+(\eta_k)_{k\geq 0}) = \sum_{k\geq 0} \xi_k+\eta_k = \sum_{k\geq 0}\xi_k + \sum_{k\geq 0} \eta_k.
+        X/\ker S = X/X_0 \isom \Cplx.
     \end{equation*}
     
-    Furthermore, $S$ is bijective. $S$ is surjective since $S(\lambda,0,0,0,\ldots) = \lambda$ for any $\lambda \in \Cplx$,
-    and if $S(x+X_0) = S(y+X_0)$, then $x-y \in X_0$, so $x+X_0 = y+Y_0$. 
+    Let $\Psi$ be this isomorphism, that is,
+    $\Psi(x+X_0) = S(x)$ for $x \in X$.
     
-    Now we must prove that $S$ is an isometry. Choose $(x_k)_{k\geq 0} \in X$ such that each $x_k \geq 0$
-    and $\sum_{k\geq 0} = S((x_k)_{k\geq 0}+X_0) = 1$. For example, $x_k = \frac{1}{2^{k+1}}$.
+    Now we must show that this is an isometry.
+    
+    Choose $(x_k)_{k\geq 0} \in X$ such that each $x_k \geq 0$
+    and $\sum_{k\geq 0} x_k = S((x_k)_{k\geq 0}) = 1$. For example, $x_k = \frac{1}{2^{k+1}}$.
+    
+    See that $\|(x_k)_{k\geq 0}+X_0\|_{X/X_0} = 1$, since 
     
     
     Since we have shown $X/X_0$ is one dimensional, $X/X_0 = \Cplx((x_k)_{k\geq 0}+X_0)$. Hence, any $y + X_0 \in X/X_0$
-    is of the form $\lambda((x_k)_{k\geq 0}+X_0)$ for some $\lambda \in \Cplx$. Then,
+    is of the form $y = \lambda((x_k)_{k\geq 0}+X_0)$ for some $\lambda \in \Cplx$. Then,
     \begin{equation*}
-        |S(y)| = |S(\lambda((x_k)_{k\geq 0}+X_0)| = |\lambda| = \|y\|.
+        |\Psi(y)| = |S(\lambda((x_k)_{k\geq 0})| = |\lambda| = \|y\|_{X/X_0}.
     \end{equation*}
-    So $S$ is an isometry.
+    So $\Psi$ is an isometry.
 \end{proof}
 \begin{theorem}
     $X_0^\perp$ is the one dimensional subspace of $\ell^\infty$, $\Cplx(1,1,1,\ldots)$, where $(1,1,1,\ldots)$
