@@ -21,7 +21,7 @@
 
 \unswtitle{}
 \section*{Question 1}
-For this question, $X$ is a Banach space and $X_0$ is a closed subspace.
+For this question, $X$ is a normed space and $X_0$ is a closed subspace.
 
 \begin{proposition}
     There is an isometric embedding, $X/X_0 \hookrightarrow (X_0^\perp)^*$.
@@ -62,7 +62,7 @@ For this question, $X$ is a Banach space and $X_0$ is a closed subspace.
     \end{equation*}
     follows. Now we must prove the opposite inequality. 
     
-    Let $x \in X$. Then on the subspace $V := \Cplx x$, define the functional
+    Fix $x \in X$. Then on the subspace $V := \Cplx x$, define the functional
     \begin{equation*}
         \omega(\lambda x) = \lambda \|x+X_0\|_{X/X_0}.
     \end{equation*}
@@ -73,6 +73,8 @@ For this question, $X$ is a Banach space and $X_0$ is a closed subspace.
     So by the Hahn-Banach theorem (see wikipedia for the specific form), there is a functional $f \in X^*$, with $f(y) = \omega(y)$ for $y \in V$
     and $|f(z)| \leq \|z+X_0\|$ for any $z \in X$. Hence for $z \in X_0$, $f(z) = 0$, so $f \in X_0^\perp$
     and $|f(z)|\leq \|z\|$, so $\|f\|_{X^*}\leq 1$. 
+    
+    
     
     Therefore, $|f(x)| = \|x+X_0\|_{X/X_0}$. Hence, 
     \begin{equation*}
@@ -214,7 +216,7 @@ Let $X = \ell^1(\mathbb{N})$, and $X_0$ is the subspace defined by
     \begin{equation*}
         S((\xi_k)_{k\geq 0}) = \sum_{k\geq 0} \xi_k.
     \end{equation*}
-    This is well defined, since if $(\xi')_{k\geq 0} \in X_0$, then 
+%    This is well defined, since if $(\xi')_{k\geq 0} \in X_0$, then 
 %    \begin{equation*}
 %        S((\xi_k)_{k\geq 0}+(\xi'_k)_{k\geq 0}) = \sum_{k\geq 0} \xi_k+\xi'_k = \sum_{k\geq 0}\xi_k + \sum_{k\geq 0}\xi'_k = S((\xi_k)_{k\geq 0}),
 %    \end{equation*}
@@ -256,10 +258,10 @@ Let $X = \ell^1(\mathbb{N})$, and $X_0$ is the subspace defined by
 %    See that $\|(x_k)_{k\geq 0}+X_0\|_{X/X_0} = 1$, since 
     
     
-    Since we have shown $X/X_0$ is one dimensional, $X/X_0 = \Cplx(x+X_0)$. Hence, for 
-    all $y + X_0 \in X/X_0$, $y = \lambda(x+X_0)$ for some $\lambda \in \Cplx$. Then,
+    Since we have shown $X/X_0$ is one dimensional, $X/X_0 = \Cplx(e_0+X_0)$. Hence, for 
+    all $y + X_0 \in X/X_0$, $y = \lambda(e_0+X_0)$ for some $\lambda \in \Cplx$. Then,
     \begin{equation*}
-        |\Psi(y)| = |S(\lambda(x)| = |\lambda| = \|y\|_{X/X_0}.
+        |\Psi(y)| = |S(\lambda e_0)| = |\lambda| = \|y\|_{X/X_0}.
     \end{equation*}
     So $\Psi$ is an isometry.
 \end{proof}
@@ -270,7 +272,7 @@ Let $X = \ell^1(\mathbb{N})$, and $X_0$ is the subspace defined by
 \begin{proof}
     We identify $X^*$ with $\ell^\infty$. For $(\eta_k)_{k\geq 0} \in X_0^\perp$, we require for all $(\xi_k)_{k\geq 0} \in X_0$,
     \begin{equation*}
-        \sum_{k\geq 0} \xi_k \overline{\eta_k} = 0.
+        \sum_{k\geq 0} \overline{\xi_k} {\eta_k} = 0.
     \end{equation*}
     Choose the sequence $(\xi_k)_{k\geq 0} \in X_0$ as $\xi_0 = 1$ and $\xi_p = -1$ for some $p > 0$,
     and $\xi_k = 0$ otherwise. Then,
