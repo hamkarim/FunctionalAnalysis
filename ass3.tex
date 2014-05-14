@@ -28,8 +28,12 @@ For this question, $X$ is a normed space and $X_0$ is a closed subspace.
 \end{proposition}
 \begin{proof}
     Define $\rho:X/X_0\rightarrow (X_0^\perp)^*$ as $\rho(x+X_0)(f) = f(x)$, for $x \in X$
-    and $f \in X_0^\perp$. This is a well defined linear map, since if $x' + X_0 = x+X_0$, then 
-    $f(x) = f(x')$ since $x-x' \in X_0$ and $f \in X_0^\perp$. $\rho$ is linear, since $\rho(\alpha x+y+X_0) = f(\alpha x+y) = \alpha f(x) + f(y)$
+    and $f \in X_0^\perp$. 
+    
+    This is a well defined linear map, since if $x' + X_0 = x+X_0$ then
+    $f(x'-x) = 0$ as $f \in X_0^\perp$. 
+    
+    See that $\rho$ is linear, since $\rho(\alpha x+y+X_0) = f(\alpha x+y) = \alpha f(x) + f(y)$
     for $x,y \in X$ and $\alpha \in \Cplx$.
         
     
@@ -70,7 +74,7 @@ For this question, $X$ is a normed space and $X_0$ is a closed subspace.
     
     So $\omega$ is a linear functional on a subspace $V$ of $X$ bounded by the seminorm $\|\cdot\|_{X/X_0}$. 
     
-    So by the Hahn-Banach theorem (see wikipedia for the specific form), there is a functional $f \in X^*$, with $f(y) = \omega(y)$ for $y \in V$
+    So by the Hahn-Banach theorem (as in Rudin 1991, Theorem 3.2 or Wikipedia \emph{Hahn-Banach Theorem} 14/5/2014), there is a functional $f \in X^*$, with $f(y) = \omega(y)$ for $y \in V$
     and $|f(z)| \leq \|z+X_0\|$ for any $z \in X$. Hence for $z \in X_0$, $f(z) = 0$, so $f \in X_0^\perp$
     and $|f(z)|\leq \|z\|$, so $\|f\|_{X^*}\leq 1$. 
     
@@ -167,7 +171,7 @@ For this question, $X$ is a normed space and $X_0$ is a closed subspace.
     
     Then choose $\varepsilon' = \varepsilon/\|T\|$. Then if $y \in B_X(x, \varepsilon')$, 
     \begin{equation*}
-        \|Ty-Tx\| \leq \|T\|\|y-x\| \leq \varepsilon.
+        \|Ty-Tx\| \leq \|T\|\|y-x\| < \varepsilon.
     \end{equation*}
     Hence $Ty \in B_Y(Tx,\varepsilon)$, so $Ty \in U$. Therefore $B_X(x,\varepsilon') \subset T^{-1}(U)$, and so $T^{-1}(U)$
     is open.
@@ -191,7 +195,7 @@ Let $X = \ell^1(\mathbb{N})$, and $X_0$ is the subspace defined by
 \begin{theorem}
     There is an isometric isomorphism,
     \begin{equation*}
-        X/X_0 \isom \Cplx
+        X/X_0 \isom \Cplx.
     \end{equation*}
 \end{theorem}
 %\begin{proof}
